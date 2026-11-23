@@ -192,6 +192,7 @@ public class Main extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setBackgroundDrawable(new ColorDrawable(BG));
         prefs = getSharedPreferences("launcher", MODE_PRIVATE);
+        if (getPackageName().endsWith(".versadrive")) VersaDriveSetup.seed(prefs);
         I18n.init(this, prefs);
         LiveMapView.headingUp = prefs.getBoolean("map_heading", false);
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);

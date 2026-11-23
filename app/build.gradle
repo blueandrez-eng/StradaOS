@@ -42,9 +42,9 @@ android {
         // Versión de prueba: se instala junto a la normal (otro paquete y otro nombre). En GitHub Actions se firma
         // con la misma llave que la normal para que cada prueba nueva se instale encima de la anterior.
         debug {
-            applicationIdSuffix '.debug'
-            versionNameSuffix '-prueba'
-            manifestPlaceholders = [appLabel: 'StradaOS Prueba']
+            applicationIdSuffix '.versadrive'
+            versionNameSuffix '-versadrive-beta1'
+            manifestPlaceholders = [appLabel: 'VersaDrive Prueba']
             if (ksPath) signingConfig signingConfigs.release
         }
     }
@@ -67,7 +67,7 @@ android {
 
     applicationVariants.configureEach { variant ->
         variant.outputs.configureEach {
-            outputFileName = "StradaOS-${variant.versionName}.apk"
+            outputFileName = "${variant.buildType.name == 'debug' ? 'VersaDrive' : 'StradaOS'}-${variant.versionName}.apk"
         }
     }
 }
